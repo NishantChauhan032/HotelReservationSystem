@@ -46,4 +46,12 @@ public class HotelReservationSystemTest {
 
 	}
 	
+	@Test
+	public void givendetailsOf3Hotels_WhenCheckedForRewardCustomer_ShouldReturnHotelWithCheapestBestRating() {
+		HotelReservationSystem hotelObject = new HotelReservationSystem();
+		
+		hotelObject.getPriceAsPerTypeOfCustomer();
+		Hotel hotel = hotelObject.findBestRatedHotelFromTheCheapestHotels();
+		Assert.assertEquals(hotel.getName(), "Ridgewood");
+	}
 }
