@@ -25,8 +25,8 @@ public class HotelReservationSystemTest {
 		hotelObject.addHotel("Bridgewood", 150, 50 , 4);
 		hotelObject.addHotel("Ridgewood", 220, 150 , 5);
 
-		int value = hotelObject.findCheapestHotel();
-		Assert.assertEquals(value,200);
+		Hotel hotel = hotelObject.findBestRatedHotelFromTheCheapestHotels();
+		Assert.assertEquals(hotel.getName(),"Bridgewood");
 
 	}
 
