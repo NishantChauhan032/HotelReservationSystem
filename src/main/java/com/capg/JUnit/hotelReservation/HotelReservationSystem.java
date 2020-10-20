@@ -76,6 +76,33 @@ public class HotelReservationSystem {
 		return list.get(0);
 	}
 	
+	public Map<Hotel, Integer> findBestRatedHotelOfAll() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
+		System.out.println("Enter Check-In date(ddMMMyyyy),Check-Out date(ddMMMyyyy) to find best rated hotel for you :");
+		String temp = sc.next();
+		String[] dates = temp.split(",");
+		try {
+			checkInDate = dateFormat.parse(dates[0]);
+			checkOutDate = dateFormat.parse(dates[1]);
+		} catch (ParseException e) {
+			System.out.println("invalid check date format");
+		}
+		Map<Hotel, Integer> hotelratingList = new HashMap<Hotel, Integer>();
+		Map<Hotel, Integer> highestRatedHotelMap = new HashMap<Hotel, Integer>();
+		for (Hotel h : hotelList) {
+			hotelratingList.put(h, h.getRating());
+		}
+		int maxRating = Collections.max(hotelratingList.values());
+		hotelratingList.forEach((k, v) -> {
+			if (v == maxRating) {
+				highestRatedHotelMap.put(k, calculateTotalAmount(k));
+				System.out.println(
+						"\nHighest Rated Hotel is: " + k.getName() + ", Total Rate: $" + highestRatedHotelMap.get(k));
+			}
+		});
+		return highestRatedHotelMap;
+	}
+	
 	public int calculateTotalAmount(Hotel h) {
         long difference = checkOutDate.getTime() - checkInDate.getTime();
         int noOfDays = (int) (difference / (1000 * 60 * 60 * 24)) + 1; //Convert milliseconds to days

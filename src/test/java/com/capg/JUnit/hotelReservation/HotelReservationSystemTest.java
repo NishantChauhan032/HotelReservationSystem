@@ -1,5 +1,7 @@
 package com.capg.JUnit.hotelReservation;
 
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -27,6 +29,19 @@ public class HotelReservationSystemTest {
 
 		Hotel hotel = hotelObject.findBestRatedHotelFromTheCheapestHotels();
 		Assert.assertEquals(hotel.getName(),"Bridgewood");
+
+	}
+	
+	@Test
+	public void givenDetailsOfThreeHotels_whenEnteredCorrect_shouldReturnBestRatedHotel() {
+		HotelReservationSystem hotelObject = new HotelReservationSystem();
+
+		hotelObject.addHotel("Lakewood", 110, 90 , 3);
+		hotelObject.addHotel("Bridgewood", 150, 50 , 4);
+		hotelObject.addHotel("Ridgewood", 220, 150 , 5);
+
+		Map<Hotel,Integer> value =hotelObject.findBestRatedHotelOfAll();
+		Assert.assertEquals(value.keySet().stream().findFirst().get().getName(),"Ridgewood");
 
 	}
 
