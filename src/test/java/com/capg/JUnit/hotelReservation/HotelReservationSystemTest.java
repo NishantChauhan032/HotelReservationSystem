@@ -10,8 +10,9 @@ public class HotelReservationSystemTest {
 		HotelReservationSystem hotelObject = new HotelReservationSystem();
 
 		hotelObject.addHotel("Lakewood", 110, 90);
-		hotelObject.addHotel("Lakewood", 160, 50);
-		hotelObject.addHotel("Lakewood", 220, 150);
+		hotelObject.addHotel("Bridgewood", 150, 50);
+		hotelObject.addHotel("Ridgewood", 220, 150);
+		
 		int listSize = hotelObject.hotelList.size();
 		Assert.assertEquals(3, listSize); // Test Case For Use Case 1
 	}
@@ -21,10 +22,12 @@ public class HotelReservationSystemTest {
 		HotelReservationSystem hotelObject = new HotelReservationSystem();
 
 		hotelObject.addHotel("Lakewood", 110, 90);
-		hotelObject.addHotel("Lakewood", 160, 50);
-		hotelObject.addHotel("Lakewood", 220, 150);
+		hotelObject.addHotel("Bridgewood", 150, 50);
+		hotelObject.addHotel("Ridgewood", 220, 150);
 
-		Assert.assertEquals("Lakewood", hotelObject.findCheapestHotel());// Test Case For Use Case 2
+		int value = hotelObject.findCheapestHotel();
+		Assert.assertEquals(value,200);
+
 	}
 
 }
