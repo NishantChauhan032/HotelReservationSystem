@@ -2,12 +2,14 @@ package com.capg.JUnit.hotelReservation;
 
 public class Hotel {
 	private String name;
-	private int price;
+	private int weekdayPrice;
+	private int weekendPrice;
 
-	public Hotel(String name, int price) {
+	public Hotel(String name, int weekdayPrice, int weekendPrice) {
 		super();
 		this.name = name;
-		this.price = price;
+		this.weekdayPrice = weekdayPrice;
+		this.weekendPrice = weekendPrice;
 	}
 
 	public String getName() {
@@ -18,17 +20,25 @@ public class Hotel {
 		this.name = name;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getWeekdayPrice() {
+		return weekdayPrice;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setWeekdayPrice(int weekdayPrice) {
+		this.weekdayPrice = weekdayPrice;
+	}
+
+	public int getWeekendPrice() {
+		return weekendPrice;
+	}
+
+	public void setWeekendPrice(int weekendPrice) {
+		this.weekendPrice = weekendPrice;
 	}
 
 	@Override
 	public String toString() {
-		return "\nHotel Name : " + name + ", Price(per day) : $" + price;
+		return "\nHotel Name : " + name + ", Weekday Price : $" + weekdayPrice + ", Weekend Price : $" + weekendPrice;
 	}
 
 }
