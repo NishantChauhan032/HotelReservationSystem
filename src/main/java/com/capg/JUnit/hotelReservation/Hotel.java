@@ -1,53 +1,34 @@
 package com.capg.JUnit.hotelReservation;
 
 public class Hotel {
-	private String hotelName;
-	private int regularCustomerWeekDayPrice;
-	private int regularCustomerWeekEndPrice;
-	
-	
-	public Hotel(String name, int regularCustomerWeekDayPrice, int regularCustomerWeekEndPrice) {
+	private String name;
+	private int price;
+
+	public Hotel(String name, int price) {
 		super();
-		this.hotelName = name;
-		this.regularCustomerWeekDayPrice = regularCustomerWeekDayPrice;
-		this.regularCustomerWeekEndPrice = regularCustomerWeekEndPrice;
+		this.name = name;
+		this.price = price;
 	}
 
-    
 	public String getName() {
-		return hotelName;
+		return name;
 	}
 
-
-	public void setName(String hotelName) {
-		this.hotelName = hotelName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-
-	public int getRegularCustomerWeekDayPrice() {
-		return regularCustomerWeekDayPrice;
+	public int getPrice() {
+		return price;
 	}
 
-
-	public void setRegularCustomerWeekDayPrice(int regularCustomerWeekDayPrice) {
-		this.regularCustomerWeekDayPrice = regularCustomerWeekDayPrice;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-
-
-	public int getRegularCustomerWeekEndPrice() {
-		return regularCustomerWeekEndPrice;
-	}
-
-
-	public void setRegularCustomerWeekEndPrice(int regularCustomerWeekEndPrice) {
-		this.regularCustomerWeekEndPrice = regularCustomerWeekEndPrice;
-	}
-
 
 	@Override
-	public String toString(){
-		return "Hotel Name: "+ hotelName + "\n Regular weekday price : "+ regularCustomerWeekDayPrice
-		       + "\nRegular weekend price : "+ regularCustomerWeekEndPrice + "\n";
+	public String toString() {
+		return "Hotel Name : " + name + " Price : " + price;
 	}
 
 }
