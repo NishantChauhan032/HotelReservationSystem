@@ -79,8 +79,8 @@ public class HotelReservationSystem {
 	public Map<Hotel, Integer> findBestRatedHotelOfAll() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
 		System.out.println("Enter Check-In date(ddMMMyyyy),Check-Out date(ddMMMyyyy) to find best rated hotel for you :");
-		String temp = sc.next();
-		String[] dates = temp.split(",");
+		String inputDates = sc.next();
+		String[] dates = inputDates.split(",");
 		try {
 			checkInDate = dateFormat.parse(dates[0]);
 			checkOutDate = dateFormat.parse(dates[1]);
@@ -92,9 +92,9 @@ public class HotelReservationSystem {
 		for (Hotel h : hotelList) {
 			hotelratingList.put(h, h.getRating());
 		}
-		int maxRating = Collections.max(hotelratingList.values());
+		int maximumHotelRating = Collections.max(hotelratingList.values());
 		hotelratingList.forEach((k, v) -> {
-			if (v == maxRating) {
+			if (v == maximumHotelRating) {
 				highestRatedHotelMap.put(k, calculateTotalAmount(k));
 				System.out.println(
 						"\nHighest Rated Hotel is: " + k.getName() + ", Total Rate: $" + highestRatedHotelMap.get(k));
@@ -142,6 +142,21 @@ public class HotelReservationSystem {
 
         return workDays;
     }
+    
+    public void getPriceAsPerTypeOfCustomer() {
+		System.out.println("Please select the type of customer(1/2) : \n1- Regular Customer \n2- Reward Customer");
+		int customerType=Integer.parseInt(sc.nextLine());
+		if(customerType==1) {
+			addHotel("Lakewood", 110, 90, 3);
+			addHotel("Bridgewood", 150, 50, 4);
+			addHotel("Ridgewood", 220, 150, 5);
+		}
+		if(customerType==2) {
+			addHotel("Lakewood", 80, 80, 3);
+			addHotel("Bridgewood", 110, 50, 4);
+			addHotel("Ridgewood", 100, 40, 5);
+		}
+	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Hotel Reservation System!");

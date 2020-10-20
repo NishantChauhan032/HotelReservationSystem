@@ -1,5 +1,6 @@
 package com.capg.JUnit.hotelReservation;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.junit.Assert;
@@ -44,5 +45,5 @@ public class HotelReservationSystemTest {
 		Assert.assertEquals(value.keySet().stream().findFirst().get().getName(),"Ridgewood");
 
 	}
-
+	
 }
