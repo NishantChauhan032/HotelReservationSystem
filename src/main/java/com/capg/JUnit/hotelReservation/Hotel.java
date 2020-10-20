@@ -28,7 +28,7 @@ public class Hotel {
 
 	@Override
 	public String toString() {
-		return "Hotel Name : " + name + " Price : " + price;
+		return "\nHotel Name : " + name + ", Price(per day) : $" + price;
 	}
 
 }

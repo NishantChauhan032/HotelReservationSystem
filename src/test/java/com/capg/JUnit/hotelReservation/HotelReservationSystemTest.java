@@ -1,12 +1,12 @@
 package com.capg.JUnit.hotelReservation;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 public class HotelReservationSystemTest {
+	
 	@Test
 	public void givenDetailsOfHotels_whenAddedToList_shouldShowSizeOfListAs3() {
 		HotelReservationSystem hotelObject = new HotelReservationSystem();
@@ -15,11 +15,14 @@ public class HotelReservationSystemTest {
 		Hotel bridgeWood = new Hotel("Bridgewood", 160);
 		Hotel ridgeWood = new Hotel("Ridgewood", 220);
 
-		ArrayList<Hotel> hotelList = hotelObject.getHotelList();
-		hotelList.add(lakeWood);
-		hotelList.add(bridgeWood);
-		hotelList.add(ridgeWood);
-		int listSize = hotelList.size();
+		ArrayList<Hotel> hotelList1 = hotelObject.getHotelList();
+		hotelList1.add(lakeWood);
+		hotelList1.add(bridgeWood);
+		hotelList1.add(ridgeWood);
+		int listSize = hotelList1.size();
 		Assert.assertEquals(3, listSize);
+	    
+		Assert.assertEquals("Lakewood",HotelReservationSystem.findCheapestHotel());
 	}
+	
 }
