@@ -1,7 +1,6 @@
 package com.capg.JUnit.hotelReservation;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,38 +19,19 @@ public class HotelReservationSystemTest {
 		Assert.assertEquals(3, listSize); // Test Case For Use Case 1
 	}
 
-	@Test
-	public void givenDetailsOfThreeHotels_whenEnteredCorrect_shouldReturnCheapestHotel() {
-		HotelReservationSystem hotelObject = new HotelReservationSystem();
-
-		hotelObject.addHotel("Lakewood", 110, 90 , 3);
-		hotelObject.addHotel("Bridgewood", 150, 50 , 4);
-		hotelObject.addHotel("Ridgewood", 220, 150 , 5);
-
-		Hotel hotel = hotelObject.findBestRatedHotelFromTheCheapestHotels();
-		Assert.assertEquals(hotel.getName(),"Bridgewood");
-
-	}
-	
-	@Test
-	public void givenDetailsOfThreeHotels_whenEnteredCorrect_shouldReturnBestRatedHotel() {
-		HotelReservationSystem hotelObject = new HotelReservationSystem();
-
-		hotelObject.addHotel("Lakewood", 110, 90 , 3);
-		hotelObject.addHotel("Bridgewood", 150, 50 , 4);
-		hotelObject.addHotel("Ridgewood", 220, 150 , 5);
-
-		Map<Hotel,Integer> value =hotelObject.findBestRatedHotelOfAll();
-		Assert.assertEquals(value.keySet().stream().findFirst().get().getName(),"Ridgewood");
-
-	}
-	
-	@Test
-	public void givendetailsOf3Hotels_WhenCheckedForRewardCustomer_ShouldReturnHotelWithCheapestBestRating() {
-		HotelReservationSystem hotelObject = new HotelReservationSystem();
+	@Test //for regular customer
+	public void givendetailsOfHotelsForRegularCustomer_whenCorrect_shouldReturnTrue() throws InvalidInputException {
 		
-		hotelObject.getPriceAsPerTypeOfCustomer();
-		Hotel hotel = hotelObject.findBestRatedHotelFromTheCheapestHotels();
-		Assert.assertEquals(hotel.getName(), "Ridgewood");
+		HotelReservationSystem hotelObject = new HotelReservationSystem();
+		ArrayList<Hotel> rate = hotelObject.findBestRatedHotelFromTheCheapestHotels();
+		Assert.assertEquals(hotelObject.calculateTotalAmount(rate.get(0)), 200);
+	}
+	
+	@Test //for reward customer
+	public void givendetailsOfHotelsForRewardCustomer_whenCorrect_shouldReturnTrue() throws InvalidInputException {
+		
+		HotelReservationSystem hotelObject=new HotelReservationSystem();
+		ArrayList<Hotel> rate = hotelObject.findBestRatedHotelFromTheCheapestHotels();
+		Assert.assertEquals(hotelObject.calculateTotalAmount(rate.get(0)),140);
 	}
 }
