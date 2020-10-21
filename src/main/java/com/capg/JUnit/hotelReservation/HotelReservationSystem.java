@@ -21,7 +21,7 @@ public class HotelReservationSystem {
 	public HotelReservationSystem() {
 		hotelList = new ArrayList<Hotel>();
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Hotel Reservation System!");
 		HotelReservationSystem temp = new HotelReservationSystem();
@@ -37,7 +37,7 @@ public class HotelReservationSystem {
 		hotelList.add(newHotel);
 	}
 
-	public void setDates() throws InvalidInputException { //date validation using Regex
+	public void setDates() throws InvalidInputException { // date validation using Regex
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
 		System.out.println("Please specify Check-In date(ddMMMyyyy),Check-Out date(ddMMMyyyy):");
@@ -66,7 +66,7 @@ public class HotelReservationSystem {
 		}
 	}
 
-	public Map<Hotel, Integer> findCheapestHotel() throws InvalidInputException { 
+	public Map<Hotel, Integer> findCheapestHotel() throws InvalidInputException {
 		getPriceAsPerTypeOfCustomer();
 		System.out.println(hotelList);
 		setDates();
@@ -133,7 +133,7 @@ public class HotelReservationSystem {
 		return sumTotal;
 	}
 
-	public static int getWeekendsCount(Date start, Date end) { //method to count weekends
+	public static int getWeekendsCount(Date start, Date end) { // method to count weekends
 		Calendar calStart = Calendar.getInstance();
 		calStart.setTime(start);
 		Calendar calEnd = Calendar.getInstance();
